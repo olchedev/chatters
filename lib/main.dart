@@ -40,8 +40,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Chatters',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        backgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
+        scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
+        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+          backgroundColor: Color.fromRGBO(30, 29, 37, 1.0),
+        ),
       ),
+      navigatorKey: NavigationService.navigatorKey,
       home: const Scaffold(),
     );
   }
