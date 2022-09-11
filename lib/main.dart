@@ -1,3 +1,4 @@
+import 'package:chatters/services/cloud_storage_service.dart';
 import 'package:chatters/services/media_service.dart';
 import 'package:chatters/services/navigation_service.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,9 @@ void _registerServices() {
   );
   GetIt.instance.registerSingleton<MediaService>(
     MediaService(),
+  );
+  GetIt.instance.registerSingleton<CloudStorageService>(
+    CloudStorageService(),
   );
 }
 
