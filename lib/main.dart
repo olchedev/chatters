@@ -1,4 +1,5 @@
 import 'package:chatters/pages/login_page.dart';
+import 'package:chatters/providers/authentication_provider.dart';
 import 'package:chatters/services/cloud_storage_service.dart';
 import 'package:chatters/services/database_service.dart';
 import 'package:chatters/services/media_service.dart';
@@ -7,6 +8,7 @@ import 'package:chatters/theme/chatters_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
+import 'package:provider/provider.dart';
 
 Future<void> _setUp() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,14 +41,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Chatters',
-      theme: const ChattersThemeData().materialTheme,
-      navigatorKey: NavigationService.navigatorKey,
-      initialRoute: '/login',
-      routes: {
-        '/login': (BuildContext _) => const LoginPage(),
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<AuthenticationProvider>(
+          create: (BuildContext _) => AuthenticationProvider(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'Chatters',
+        theme: const ChattersThemeData().materialTheme,
+        navigatorKey: NavigationService.navigatorKey,
+        initialRoute: '/login',
+        routes: {
+          '/login': (BuildContext _) => const LoginPage(),
+        },
+      ),
     );
   }
 }
