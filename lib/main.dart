@@ -1,3 +1,4 @@
+import 'package:chatters/services/media_service.dart';
 import 'package:chatters/services/navigation_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -12,6 +13,9 @@ Future<void> _setUp() async {
 void _registerServices() {
   GetIt.instance.registerSingleton<NavigationService>(
     NavigationService(),
+  );
+  GetIt.instance.registerSingleton<MediaService>(
+    MediaService(),
   );
 }
 
