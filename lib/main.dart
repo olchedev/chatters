@@ -1,7 +1,9 @@
+import 'package:chatters/pages/login_page.dart';
 import 'package:chatters/services/cloud_storage_service.dart';
 import 'package:chatters/services/database_service.dart';
 import 'package:chatters/services/media_service.dart';
 import 'package:chatters/services/navigation_service.dart';
+import 'package:chatters/theme/chatters_theme_data.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
@@ -39,15 +41,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Chatters',
-      theme: ThemeData(
-        backgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
-        scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
-        bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Color.fromRGBO(30, 29, 37, 1.0),
-        ),
-      ),
+      theme: const ChattersThemeData().materialTheme,
       navigatorKey: NavigationService.navigatorKey,
-      home: const Scaffold(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (BuildContext _) => const LoginPage(),
+      },
     );
   }
 }
