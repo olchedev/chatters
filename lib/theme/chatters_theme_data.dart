@@ -9,6 +9,20 @@ class ChattersThemeData {
       splashColor: const Color.fromRGBO(36, 35, 49, 1.0),
       backgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
       scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
+      snackBarTheme: const SnackBarThemeData(
+        backgroundColor: Color(0xFFFC9217),
+        contentTextStyle: TextStyle(
+          color: Colors.white,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              AppDimensions.snackBarRadius,
+            ),
+          ),
+        ),
+        behavior: SnackBarBehavior.floating,
+      ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Color.fromRGBO(30, 29, 37, 1.0),
       ),

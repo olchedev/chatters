@@ -1,70 +1,77 @@
+import 'package:chatters/providers/authentication_provider.dart';
 import 'package:chatters/utils/app_dimensions.dart';
 import 'package:chatters/utils/validation_regex.dart';
 import 'package:chatters/widgets/custom_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final _loginFormKey = GlobalKey<FormState>();
-
-  @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
+    final Size deviceSize = MediaQuery.of(context).size;
+    final textTheme = Theme.of(context).textTheme;
+    final loginFormKey = GlobalKey<FormState>();
+
+    AuthenticationProvider authenticationProvider =
+        Provider.of<AuthenticationProvider>(context);
 
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Chatters',
-              style: theme.textTheme.headline1,
-            ),
-            Form(
-              key: _loginFormKey,
-              child: Column(
-                children: [
-                  CustomTextFormField(
-                    label: 'Login',
-                    regExp: ValidationRegExp.login,
-                    onSaved: (value) {},
-                    errorMessage: 'Please, enter valid email',
-                  ),
-                  CustomTextFormField(
-                    label: 'Password',
-                    regExp: ValidationRegExp.password,
-                    obscureText: true,
-                    onSaved: (value) {},
-                    errorMessage: 'Please, enter valid login',
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: deviceSize.height,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Chatters',
+                style: textTheme.headline1,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(
-                AppDimensions.xm,
+              Form(
+                key: loginFormKey,
+                child: Column(
+                  children: [
+                    CustomTextFormField(
+                      label: 'Login',
+                      controller: authenticationProvider.loginController,
+                      regExp: ValidationRegExp.login,
+                      errorMessage: 'Please, enter valid email',
+                    ),
+                    CustomTextFormField(
+                      label: 'Password',
+                      controller: authenticationProvider.passwordController,
+                      regExp: ValidationRegExp.password,
+                      obscureText: true,
+                      errorMessage: 'Please, enter valid password',
+                    ),
+                  ],
+                ),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Text('LOGIN'),
-                  ),
-                  OutlinedButton(
-                    onPressed: () {},
-                    child: const Text('REGISTER'),
-                  ),
-                ],
+              Padding(
+                padding: const EdgeInsets.all(
+                  AppDimensions.xm,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () => authenticationProvider.login(
+                        loginFormKey,
+                        context,
+                      ),
+                      child: const Text('LOGIN'),
+                    ),
+                    OutlinedButton(
+                      onPressed: () =>
+                          authenticationProvider.navigateToRegisterPage(),
+                      child: const Text('REGISTER'),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

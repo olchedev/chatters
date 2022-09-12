@@ -14,11 +14,12 @@ class AppDimensions {
   static const m = 20.0;
   static const xm = 25.0;
   static const xxm = 36.0;
-  static const xxxm = 40.0;
 
   /// l size, contains [large] interval sizes
 
   /// h size, contains [huge] interval sizes
+
+  static const snackBarRadius = AppDimensions.xs;
 
   static const inputTextFieldLabelSize = AppDimensions.xxs;
   static const inputTextFieldLabelPadding = AppDimensions.xs;
@@ -28,12 +29,12 @@ class AppDimensions {
 
   static const elevatedButtonRadius = AppDimensions.xxm;
   static const elevatedButtonNameVerticalPadding = AppDimensions.xxs;
-  static const elevatedButtonNameHorizontalPadding = AppDimensions.xxxm;
+  static const elevatedButtonNameHorizontalPadding = AppDimensions.xxm;
   static const elevatedButtonNameSize = AppDimensions.xxs;
 
   static const outlinedButtonRadius = AppDimensions.xxm;
   static const outlinedButtonNameVerticalPadding = AppDimensions.xxs;
-  static const outlinedButtonNameHorizontalPadding = AppDimensions.xxxm;
+  static const outlinedButtonNameHorizontalPadding = AppDimensions.xxm;
   static const outlinedButtonNameSize = AppDimensions.xxs;
 
   static const headline1LetterSpacing = AppDimensions.xt;

@@ -1,4 +1,6 @@
+import 'package:chatters/pages/home_page.dart';
 import 'package:chatters/pages/login_page.dart';
+import 'package:chatters/pages/register_page.dart';
 import 'package:chatters/providers/authentication_provider.dart';
 import 'package:chatters/services/cloud_storage_service.dart';
 import 'package:chatters/services/database_service.dart';
@@ -9,12 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
-
-Future<void> _setUp() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  _registerServices();
-}
 
 void _registerServices() {
   GetIt.instance.registerSingleton<NavigationService>(
@@ -32,7 +28,9 @@ void _registerServices() {
 }
 
 void main() async {
-  _setUp();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  _registerServices();
   runApp(const MyApp());
 }
 
@@ -54,6 +52,8 @@ class MyApp extends StatelessWidget {
         initialRoute: '/login',
         routes: {
           '/login': (BuildContext _) => const LoginPage(),
+          '/home': (BuildContext _) => const HomePage(),
+          '/register': (BuildContext _) => const RegisterPage(),
         },
       ),
     );

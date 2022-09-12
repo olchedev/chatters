@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
-    required this.onSaved,
-    required this.regExp,
     required this.label,
+    required this.controller,
+    required this.regExp,
     required this.errorMessage,
     this.obscureText = false,
     Key? key,
   }) : super(key: key);
 
-  final Function(String) onSaved;
-  final RegExp regExp;
   final String label;
+  final TextEditingController controller;
+  final RegExp regExp;
   final String errorMessage;
   final bool obscureText;
 
@@ -44,8 +44,8 @@ class CustomTextFormField extends StatelessWidget {
               color: Colors.white,
             ),
             obscureText: obscureText,
-            onSaved: (value) => onSaved(value!),
             validator: (value) => regExp.hasMatch(value!) ? null : errorMessage,
+            controller: controller,
           ),
         ],
       ),
