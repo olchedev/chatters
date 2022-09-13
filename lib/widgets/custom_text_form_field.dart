@@ -8,6 +8,7 @@ class CustomTextFormField extends StatelessWidget {
     required this.regExp,
     required this.errorMessage,
     this.obscureText = false,
+    this.suffixIcon,
     Key? key,
   }) : super(key: key);
 
@@ -16,6 +17,7 @@ class CustomTextFormField extends StatelessWidget {
   final RegExp regExp;
   final String errorMessage;
   final bool obscureText;
+  final Widget? suffixIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,9 @@ class CustomTextFormField extends StatelessWidget {
             obscureText: obscureText,
             validator: (value) => regExp.hasMatch(value!) ? null : errorMessage,
             controller: controller,
+            decoration: InputDecoration(
+              suffixIcon: suffixIcon,
+            ),
           ),
         ],
       ),

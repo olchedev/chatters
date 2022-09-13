@@ -7,7 +7,7 @@ class MediaService {
     );
 
     if (result != null) {
-      return result.files[0];
+      return result.files.first;
     }
 
     return null;

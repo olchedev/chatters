@@ -2,6 +2,7 @@ import 'package:chatters/pages/home_page.dart';
 import 'package:chatters/pages/login_page.dart';
 import 'package:chatters/pages/register_page.dart';
 import 'package:chatters/providers/authentication_provider.dart';
+import 'package:chatters/providers/registration_provider.dart';
 import 'package:chatters/services/cloud_storage_service.dart';
 import 'package:chatters/services/database_service.dart';
 import 'package:chatters/services/media_service.dart';
@@ -43,6 +44,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<AuthenticationProvider>(
           create: (BuildContext _) => AuthenticationProvider(),
+        ),
+        ChangeNotifierProvider<RegistrationProvider>(
+          create: (BuildContext _) => RegistrationProvider(),
         ),
       ],
       child: MaterialApp(

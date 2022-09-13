@@ -10,7 +10,7 @@ class ChattersThemeData {
       backgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
       scaffoldBackgroundColor: const Color.fromRGBO(36, 35, 49, 1.0),
       snackBarTheme: const SnackBarThemeData(
-        backgroundColor: Color(0xFFFC9217),
+        backgroundColor: Color(0x869A2222),
         contentTextStyle: TextStyle(
           color: Colors.white,
         ),
